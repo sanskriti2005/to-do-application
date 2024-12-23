@@ -15,7 +15,9 @@ async function main1() {
         let todos = []
         let userObj = { name, email, password, todos }
 
-        main.checkIfDataAlreadyExists(data, userObj);
+        // checks is user already exists. if exists, redirects them to login page
+        // if not, POSTS their data in the database
+        main.checkIfDataAlreadyExists(data, userObj, url);
     })
 
 

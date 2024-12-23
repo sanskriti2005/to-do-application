@@ -15,24 +15,25 @@ export async function getData(url){
 // [SIGNUP PAGE]: function that checks if a user already exists in the database and then deals with it accordingly 
 export async function checkIfDataAlreadyExists(arr, userObj, url) {
     let foundObj = arr.find((ele,i) => ele.email == userObj.email);
-    if(!foundObj){
+    if(foundObj){
         alert("User already exists!")
         window.location.href = "login.html"
     } else {
         // POST the new user's data back to the endpoint
-        await fetch(url, {
-            method:"POST",
-            headers: {
-                "content-type":"application/json"
-            },
-            body: JSON.stringify(userObj)
-        })
-        .then((promise) => {
+        console.log(userObj);
+        try{
+            const res = await fetch(url, {
+                method:"POST",
+                headers: {
+                    "content-type":"application/json"
+                },
+                body: JSON.stringify(userObj)
+            })
             alert("Sign-Up Successful!")
             window.location.href = "todo.html"
-        })
-        .catch((err) => {
+        }catch(err){
+            console.log(err)
             alert("Something went wrong.. Could not Sign-up")
-        })
+        }
     }
 }
