@@ -1,5 +1,5 @@
-import { url } from "./baseUrl.js";
 import * as main from "./main.js"
+import { url } from "./baseUrl.js"
 
 async function main1() {
     // catching the basics
@@ -9,17 +9,20 @@ async function main1() {
     console.log(data)
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
-        let name = form.name.value
         let email = form.email.value
         let password = form.password.value
-        let todos = []
-        let userObj = { name, email, password, todos }
 
-        // checks is user already exists.
-        const foundObj = await main.checkIfDataAlreadyExists(data, userObj);
-        //  if exists, redirects them to login page
-        // if not, POSTS their data in the database
-        await main.signup(userObj, foundObj, url)
+        let tempUserObj = { email, password }
+        console.log(tempUserObj);
+
+        // check if the person logging in exists in our database
+        let foundObj = await main.checkIfDataAlreadyExists(data, tempUserObj);
+        console.log(foundObj);
+
+        // then do the signup after checking
+        await main.login(foundObj, tempUserObj)
+
+
     }) 
 }
 main1()
