@@ -19,7 +19,7 @@ async function main1() {
         const foundObj = await main.checkIfDataAlreadyExists(data, userObj);
         //  if exists, redirects them to login page
         // if not, POSTS their data in the database
-        await main.signup(userObj, foundObj, url)
+        await main.signup(userObj,foundObj, url)
     }) 
 }
 main1()

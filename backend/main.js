@@ -69,3 +69,9 @@ export async function signup(userObj, foundObj ,url) {
         }
     }
 }
+
+export function displayTasks(arr, container){
+    arr.forEach((ele, i) => {
+        
+    })
+}

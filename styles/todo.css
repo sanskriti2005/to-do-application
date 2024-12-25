@@ -1,0 +1,10 @@
+#task-form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 2px;
+}
+#task-form-header{
+    display: flex;
+    justify-content: flex-end;
+}
